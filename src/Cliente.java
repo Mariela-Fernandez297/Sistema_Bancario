@@ -4,13 +4,17 @@ public class Cliente
     private String documento;
     private String telefono;
     private AutenticacionUtil util;
+    private Cuenta cuenta;
 
-    public Cliente(String nombre, String documento, String telefono, String clave) {
+    public Cliente(String nombre, String documento, String telefono, String clave, int agencia, int numero, double saldo) {
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
         this.util = new AutenticacionUtil();
         this.util.setClave(clave);
+        this.cuenta.setAgencia(agencia);
+        this.cuenta.setNumero(numero);;
+        this.cuenta.setSaldo(saldo);
     }
 
     public AutenticacionUtil getUtil() {

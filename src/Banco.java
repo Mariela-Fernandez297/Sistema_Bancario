@@ -68,7 +68,7 @@ public class Banco
             {
                 case 1 -> registrarContador();
                 case 2 -> registrarGerente();
-                case 3 -> registrarCliente();
+                case 3 -> crearCuentaCliente();
                 case 4 -> mostrarFuncionarios();
                 case 5 -> mostrarClientes();
                 case 6 -> mostrarBonificaciones();
@@ -154,9 +154,11 @@ public class Banco
         }
     }
 
-    private void registrarCliente()
+    private void crearCuentaCliente()
     {
         String nombre, documento, telefono, clave;
+        int numeroCuenta, agencia;
+        double saldo;
 
         System.out.print("Ingrese su nombre: ");
         nombre = in.next();
@@ -166,11 +168,17 @@ public class Banco
         telefono = in.next();
         System.out.print("ingrese su clave: ");
         clave = in.next();
-        Cliente cliente = new Cliente(nombre,documento,telefono,clave);
+        System.out.println("ingrese el numero de agencia: ");
+        agencia = in.nextInt();
+        System.out.print("Ingrese el numero de cuenta: ");
+        numeroCuenta = in.nextInt();
+        System.out.println("Ingrese el saldo inicial: ");
+        saldo = in.nextInt();
+
+        Cliente cliente = new Cliente(nombre,documento,telefono,clave,agencia,numeroCuenta,saldo);
         listaClientes.add(cliente);
 
     }
-
 
     private void registrarContador()
     {
