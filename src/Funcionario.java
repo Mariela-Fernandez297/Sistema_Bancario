@@ -1,4 +1,4 @@
-public class Funcionario
+public abstract class Funcionario
 {
     protected String nombre;
     protected String documento;
@@ -13,6 +13,8 @@ public class Funcionario
         this.salario = salario;
         this.tipo = tipo;
     }
+
+    public abstract double getBonificacion();
 
     public String getNombre() {
         return nombre;
@@ -45,11 +47,6 @@ public class Funcionario
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
-
-   /* public abstract double getBonificacion()
-    {
-        return this.getSalario();
-    }*/
 
     @Override
     public String toString() {

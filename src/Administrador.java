@@ -1,36 +1,50 @@
 import java.util.Scanner;
 
-public class Administrador extends Funcionario implements Autenticable {
+public class Administrador extends Funcionario implements IAutenticable {
     private AutenticacionUtil util;
 
     public Administrador(String nombre, String documento, double salario, int tipo) {
         super(nombre, documento, salario, tipo);
-    }
-
-
-
-
-
-    @Override
-    public void setClave(String password) {
-
+        this.util = new AutenticacionUtil();
     }
 
     @Override
-    public boolean iniciarSesion(String clave, String username) {
-        Scanner scanner = new Scanner(System.in);
+    public double getBonificacion() {
+        return salario * 0.06;
+    }
 
-        String correctUsername = "admin";
-        String correctPassword = "password";
 
-        System.out.print("Ingresa tu nombre de usuario: ");
-        username = scanner.nextLine();
-        System.out.print("Ingresa tu contraseña: ");
-        clave = scanner.nextLine();
+    @Override
+    public void setClave(String clave) {
+        this.util.setClave(clave);
+    }
 
-        if (username.equals(correctUsername) && clave.equals(correctPassword)) {
-            System.out.println("Bienvenido " + username + "! Has iniciado sesión correctamente.");
+
+    public AutenticacionUtil getUtil() {
+        return util;
+    }
+
+    @Override
+    public boolean iniciarSesion(String clave) {
+
+        if (clave.equals(this.util.getClave())) {
+            System.out.println("Bienvenido " + nombre + "! Has iniciado sesión correctamente.");
+            return  true;
         }
-        return false;
+        else {
+            System.out.println("Error en clave");
+            return false;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Administrador{" +
+                "util=" + util +
+                ", nombre='" + nombre + '\'' +
+                ", documento='" + documento + '\'' +
+                ", salario=" + salario +
+                ", tipo=" + tipo +
+                '}';
     }
 }

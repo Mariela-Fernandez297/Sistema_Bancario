@@ -1,32 +1,53 @@
 import java.util.Scanner;
 
-public class Gerente extends Funcionario implements Autenticable
+public class Gerente extends Funcionario implements IAutenticable
 {
-    public Gerente(String nombre, String documento, double salario, int tipo) {
+    private String clave;
+
+    public Gerente(String nombre, String documento, double salario, int tipo, String clave) {
         super(nombre, documento, salario, tipo);
+        this.clave = clave;
+    }
+
+    @Override
+    public double getBonificacion()
+    {
+        return salario * 0.1;
     }
 
 
     @Override
-    public void setClave(String password) {
+    public void setClave(String clave)
+    {
+        this.clave = clave;
+    }
 
+    public String getClave() {
+        return clave;
     }
 
     @Override
-    public boolean iniciarSesion(String clave, String username) {
-        Scanner scanner = new Scanner(System.in);
+    public boolean iniciarSesion(String clave) {
 
-        String correctUsername = "admin";
-        String correctPassword = "password";
-
-        System.out.print("Ingresa tu nombre de usuario: ");
-        username = scanner.nextLine();
-        System.out.print("Ingresa tu contraseña: ");
-        clave = scanner.nextLine();
-
-        if (username.equals(correctUsername) && clave.equals(correctPassword)) {
-            System.out.println("Bienvenido " + username + "! Has iniciado sesión correctamente.");
+        if (clave.equals(this.clave)) {
+            System.out.println("Bienvenido " + nombre + "! Has iniciado sesión correctamente.");
+            return true;
         }
-        return false;
+        else {
+            System.out.println("Error de contraseña");
+            return false;
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "Gerente{" +
+                "clave='" + clave + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", documento='" + documento + '\'' +
+                ", salario=" + salario +
+                ", tipo=" + tipo +
+                '}';
     }
 }

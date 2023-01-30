@@ -1,10 +1,20 @@
 public class AutenticacionUtil
 {
-    private String clave;
+   private String clave;
 
-    public AutenticacionUtil(String clave) {
-        this.clave = clave;
+   public void setClave(String clave)
+   {
+       this.clave = clave;
+   }
+
+    public String getClave() {
+        return clave;
     }
+
+    public boolean iniciarSesion(String clave)
+   {
+       return this.clave == clave ? true : false ;
+   }
 
     @Override
     public String toString() {
