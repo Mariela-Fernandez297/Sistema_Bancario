@@ -8,7 +8,7 @@ public class Contador extends Funcionario
 
     @Override
     public double getBonificacion() {
-        return salario * 0.01;
+        return salario * 0.01 ;
     }
 
 
