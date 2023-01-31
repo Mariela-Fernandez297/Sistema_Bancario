@@ -6,25 +6,43 @@ public class Cliente
     private AutenticacionUtil util;
     private Cuenta cuenta;
 
-    public Cliente(String nombre, String documento, String telefono, String clave, int agencia, int numero, double saldo) {
+    public Cliente(String nombre, String documento, String telefono, String clave, int numero, double saldo) {
         this.nombre = nombre;
         this.documento = documento;
         this.telefono = telefono;
         this.util = new AutenticacionUtil();
         this.util.setClave(clave);
-        this.cuenta.setAgencia(agencia);
-        this.cuenta.setNumero(numero);;
-        this.cuenta.setSaldo(saldo);
+        cuenta=new Cuenta(saldo,numero );
     }
 
     public AutenticacionUtil getUtil() {
         return util;
     }
-
-
     public String getNombre() {
         return nombre;
     }
+
+    public Cuenta getCuenta() {
+        return cuenta;
+    }
+
+    public void depositar(double depo)
+    {
+        cuenta.depositar(depo);
+    }
+    public void retirar(double reti)
+    {
+        cuenta.sacar(reti);
+    }
+    public void transferir(Cliente cliente, double monto)
+    {
+
+        cuenta.transferencia(monto, cliente.cuenta);
+    }
+    public double mostraSaldo() {
+        return cuenta.getSaldo();
+    }
+
 
     @Override
     public String toString() {

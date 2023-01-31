@@ -1,9 +1,9 @@
 public class Contador extends Funcionario
 {
 
-    public Contador(String nombre, String documento, double salario, int tipo)
+    public Contador(String nombre, String documento, double salario)
     {
-        super(nombre, documento, salario, tipo);
+        super(nombre, documento, salario);
     }
 
     @Override
@@ -18,7 +18,6 @@ public class Contador extends Funcionario
                 "nombre='" + nombre + '\'' +
                 ", documento='" + documento + '\'' +
                 ", salario=" + salario +
-                ", tipo=" + tipo +
                 '}';
     }
 }

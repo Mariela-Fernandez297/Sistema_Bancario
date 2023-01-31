@@ -4,10 +4,14 @@ public class Cuenta
     private int agencia;
     private int numero;
 
-    public Cuenta(double saldo, int agencia, int numero) {
+    public Cuenta(double saldo,  int numero) {
         this.saldo = saldo;
-        this.agencia = agencia;
+        this.agencia = 1;
         this.numero = numero;
+    }
+    public Cuenta(int agen,int numero) {
+        agencia=agen;
+        this.numero=numero;
     }
 
     public double getSaldo() {
@@ -32,6 +36,33 @@ public class Cuenta
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    public void depositar(double val) {
+
+        saldo = saldo + val;
+
+    }
+    public boolean sacar(double val) {
+
+        boolean realizado = false;
+
+        if( val <= saldo) {
+            saldo = saldo - val;
+            realizado = true;
+        }
+        return realizado;
+    }
+    public boolean transferencia(double val, Cuenta cuenta) {
+
+        boolean realizado=false;
+        if(sacar(val)) {
+
+            cuenta.depositar(val);
+            realizado=true;
+        }
+        return realizado;
+
     }
 
     @Override

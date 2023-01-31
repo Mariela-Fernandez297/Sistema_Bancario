@@ -4,8 +4,9 @@ public class Gerente extends Funcionario implements IAutenticable
 {
     private String clave;
 
-    public Gerente(String nombre, String documento, double salario, int tipo, String clave) {
-        super(nombre, documento, salario, tipo);
+    public Gerente(String nombre, String documento, double salario, String clave)
+    {
+        super(nombre, documento, salario);
         this.clave = clave;
     }
 
@@ -47,7 +48,6 @@ public class Gerente extends Funcionario implements IAutenticable
                 ", nombre='" + nombre + '\'' +
                 ", documento='" + documento + '\'' +
                 ", salario=" + salario +
-                ", tipo=" + tipo +
                 '}';
     }
 }

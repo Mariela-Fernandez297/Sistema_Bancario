@@ -3,9 +3,10 @@ import java.util.Scanner;
 public class Administrador extends Funcionario implements IAutenticable {
     private AutenticacionUtil util;
 
-    public Administrador(String nombre, String documento, double salario, int tipo) {
-        super(nombre, documento, salario, tipo);
+    public Administrador(String nombre, String documento, double salario, String clave) {
+        super(nombre, documento, salario);
         this.util = new AutenticacionUtil();
+        this.util.setClave(clave);
     }
 
     @Override
@@ -44,7 +45,6 @@ public class Administrador extends Funcionario implements IAutenticable {
                 ", nombre='" + nombre + '\'' +
                 ", documento='" + documento + '\'' +
                 ", salario=" + salario +
-                ", tipo=" + tipo +
                 '}';
     }
 }
